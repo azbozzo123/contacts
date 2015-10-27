@@ -1,0 +1,208 @@
+/* CSS declarations go here */
+
+body {
+
+	background-color: #7ACCC8;
+
+}
+
+.jumbotron{
+
+	background-color: #4AAAA5;
+
+	margin-bottom: 0;
+
+}
+
+.navbar-fixed-top {
+
+	background-color: #35404F;
+
+	border-bottom: 1px solid black;
+
+	padding: 4px;
+
+}
+
+#newContact {
+
+	display: block;
+
+	margin: 10px auto 0 auto;
+
+	padding: 5px;
+
+	text-align: center;
+
+	font-size: 1.3em;
+
+	margin-top: 10px;
+
+	width: 300px;
+
+	background-color: #35404F;
+
+	color: white;
+
+	border-radius: 10px;
+
+	-moz-box-shadow:3px 3px grey;
+
+	-webkit-box-shadow:3px 3px grey;
+
+	box-shadow:3px 3px grey;
+
+}
+
+#newContact:hover {
+	-moz-box-shadow:4px 4px grey;
+
+	-webkit-box-shadow:4px 4px grey;
+
+	box-shadow:4px 4px grey;
+	padding: 7px;
+}
+.addContactForm {
+
+	display: block;
+
+	margin: 0 auto;
+
+	width: 700px;
+
+	background-color: #588C73;
+
+	padding: 10px;
+
+	border-radius: 10px;
+
+	-moz-box-shadow:3px 3px black;
+
+	-webkit-box-shadow:3px 3px black;
+
+	box-shadow:3px 3px blacks;
+
+}
+
+.addContactForm label {
+	margin-top: 4px;
+}
+.addContactForm input {
+
+	margin-bottom: 5px;
+
+}
+
+#addContact{
+
+	display: block;
+
+	margin: 0 auto;
+
+	width: 120px;
+
+}
+
+.required {
+
+	float: right;
+
+	margin-top: -22px;
+
+}
+
+.hidden {
+
+	display: none;
+
+}
+
+.contactArea {
+
+	margin-top:30px;
+
+}
+
+.info {
+
+	border-radius: 10px;
+
+	-moz-box-shadow:2px 2px grey;
+
+	-webkit-box-shadow:2px 2px grey;
+
+	box-shadow:2px 2px grey;
+
+	text-align: center;
+
+	background-color: #A3D39C;
+
+	height: 100%;
+
+	margin-bottom: 13px;
+
+}
+
+.info:hover {
+	-moz-box-shadow:5px 5px grey;
+
+	-webkit-box-shadow:5px 5px grey;
+
+	box-shadow:5px 5px grey;
+
+	margin-left: -3px;
+}
+.info .pic {
+
+	height: 65px;
+
+	border-radius: 50%;
+
+	margin-top: 8px;
+
+}
+
+.info p {
+
+	margin-bottom: 0px;
+
+}
+
+.info .edit {
+
+	margin-right: 20px;
+
+}
+
+.edit:hover {
+	border: 1px solid black;
+	border-radius: 2px;
+
+	-moz-box-shadow:1px 1px grey;
+
+	-webkit-box-shadow:1px 1px grey;
+
+	box-shadow:1px 1px grey;
+	margin-right: 16px;
+	padding:1px;
+
+
+}
+.info .delete {
+
+	margin-left: 20px;
+
+}
+.delete:hover {
+	border: 1px solid black;
+	border-radius: 2px;
+
+	-moz-box-shadow:1px 1px grey;
+
+	-webkit-box-shadow:1px 1px grey;
+
+	box-shadow:1px 1px grey;
+	margin-left: 16px;
+
+	padding: 1px;
+}

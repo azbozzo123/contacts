@@ -1,155 +1,93 @@
 <head>
-  
 	<title>Contacts App</title>
-
 </head>
-
-
-
 <body>
-
 	<div class="navbar-fixed-top">
-
 		<div class="container">
-
 			<button class="navbar-btn">{{> loginButtons}}</button>
-
 		</div>
-
 	</div>
 
 	<div class="jumbotron">
-
 		<div class="container">
-
 			<h1>Welcome</h1>
-
 			<h3>Your Contacts App</h3>
 		</div>
-
 	</div>
 
 
 	<div class="container">
-
+		<!--add contact button-->
 		<div id="newContact">Add</div><br/>
-
+		
+		<!--new contact form-->
 		<div class="addContactForm row hidden">
-
 			<form class="new-contact">
-
 				<div class="col-sm-2">
-
 					<label>First Name:*</label>
- 
 					<label>Last Name:*</label>
- 
 					<label>Email:*</label>
- 
 				</div>
 
 				<div class="col-sm-4">
-
 					<input type="text" name="firstName" placeholder="First Name" required/>
-
 					<input type="text" name="lastName" placeholder="Last Name" required/>
 					<input type="text" name="email" placeholder="email@email.com" required/>
 				</div>
 
 				<div class="col-sm-2">
-
 					<label>Company:</label>
- 
 					<label>Phone:</label>
- 
 					<label>Pic URL:</label>
  
 				</div>
-
+				
 				<div class="col-sm-4">
-
 					<input type="text" name="company" placeholder="Company LLC"/>
-
 					<input type="text" name="phoneNum" placeholder="(000)999-9999"/>
-	
-				<input type="text" name="picURL" placeholder="Photo URL"/>
- 
+					<input type="text" name="picURL" placeholder="Photo URL"/>
 				</div>
-
 				<br/>
-
 				<input type="submit" id="addContact" value="Add Contact"/>
-
 				<span class="required">* Required</span>
-
 			</form>
-
 		</div>
-
 
 		<div class="contactArea">
-
 			{{#each contacts}}
-
 				{{> contact}}
-
 			{{/each}}
-
 		</div>
-
 	</div>
-
 </body>
 
 
 
 <template name="contact">
-
 	{{#if isOwner}}
-
 		<div class="contact col-xs-6 col-sm-4 col-md-3">
-
+			<!--all info, some will be hidden at start-->
 			<div class="info">
-
 				<img src="http://megaicons.net/static/img/icons_sizes/16/762/16/edit-icon.png" class="edit moreInfo hidden">
-
 				<img class="pic pInfo" src="{{picURL}}">
-
 				<img src="http://megaicons.net/static/img/icons_sizes/397/1173/16/general-delete-icon.png" class="delete moreInfo hidden">
-
 				<p class="pInfo"><strong class="pInfo">{{lastName}}, {{firstName}}</strong></p>
-
 				<p class="pInfo">{{company}}</p>
-
 				<p class="pInfo moreInfo hidden">{{phoneNum}}</p>
-
 				<p class="pInfo moreInfo hidden">{{email}}</p>
-
-
 				
 				<!--edit form-->
-
 				<form class="editFields hidden">
-
 					<input type="text" name="firstName" placeholder="First Name" value={{firstName}} />
-
 					<input type="text" name="lastName" value={{lastName}} />
-
 					<input type="text" name="company" placeholder="Company" value={{company}} />
-
 					<input type="text" name="email" value={{email}} />
-
 					<input type="text" name="phoneNum" value={{phoneNum}} />
-
 					<input type="text" name="picURL" value={{picURL}} />
-					
-<br/>
+					<br/>
 					<input type="submit" id="editSubmit" value="Make Edit" />
-
 				</form>
 			</div>
 		</div>
-
 	{{/if}}
-
 </template>

@@ -159,24 +159,27 @@ Template.contact.helpers({
 
 
     //update new info from edit form 
-    "submit .editFields": function(){
+    "submit .editFields": function(event){
+
+      event.preventDefault();
 
       console.log('Submition??');
 
-      var fstName = this.firstName.value;
+      var ID = this._id;
+      var fstName = event.target.firstName.value;
 
-      var lstName = this.lastName.value;
+      var lstName = event.target.lastName.value;
 
-      var company = this.company.value;
+      var company = event.target.company.value;
 
-      var eml = this.email.value;
+      var eml = event.target.email.value;
 
-      var phNum = this.phoneNum.value;
+      var phNum = event.target.phoneNum.value;
 
 
-      if(this.picURL.value !== ''){
+      if(event.target.picURL.value !== ''){
 
-          var pURL = this.picURL.value;
+          var pURL = event.target.picURL.value;
 
       }
 
@@ -190,8 +193,8 @@ Template.contact.helpers({
       
       //remove edit fields
 
-      $('.editFields').toggleClass('hidden');
-      Meteor.call("updateContact", fstName, lstName, company, eml, phNum, pURL);
+      $(event.target).toggleClass('hidden');
+      Meteor.call("updateContact", ID, fstName, lstName, company, eml, phNum, pURL);
     }
 
   });
@@ -235,12 +238,12 @@ Meteor.methods({
 
 
   //user info from edit form on contact to update info
-  updateContact: function(fstName, lstName, company, eml, phNum, pURL){
+  updateContact: function(ID, fstName, lstName, company, eml, phNum, pURL){
 
-    Contacts.update(this._id,
+    Contacts.update(ID,
  
       {$set:{
-	firstName: fstName,
+	firstName: fstName, 
 	lastName: lstName, 
 	company: company, 
 	email: eml, 

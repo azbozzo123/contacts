@@ -1,6 +1,8 @@
 Contacts = new Mongo.Collection("contacts")
 
 if (Meteor.isClient) {
+	Meteor.subscribe("contacts");
+	
 	Template.body.helpers({
 		//sort contacts by last name
 		contacts: function() {
@@ -14,12 +16,13 @@ if (Meteor.isClient) {
     		"click #newContact": function(){
 		  	if(Meteor.userId() !== null){
 			        $('.addContactForm').toggleClass('hidden');
-			 }
+			}
     		},
 
 		//listen to button to add contact
 		"submit .new-contact": function(event){
-      			//prevent default form submit
+      			
+			//prevent default form submit
       			event.preventDefault();
         
       			//grab all info from new contact form
@@ -110,6 +113,9 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+	Meteor.publish("contacts", function() {
+		return Contacts.find({owner: this.userId});
+	});
 }
 
 Meteor.methods({

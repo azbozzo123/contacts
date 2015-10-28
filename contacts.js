@@ -21,38 +21,53 @@ if (Meteor.isClient) {
 
 		//listen to button to add contact
 		"submit .new-contact": function(event){
-      			
+      				
 			//prevent default form submit
       			event.preventDefault();
         
-      			//grab all info from new contact form
-      			var fstName = event.target.firstName.value;
-      			var lstName = event.target.lastName.value;
-      			var company = event.target.company.value;
-      			var eml = event.target.email.value;
-      			var phNum = event.target.phoneNum.value;
+			if(Meteor.userId() !== null){
 
-      			//default img vs inputed img
-      			if(event.target.picURL.value !== ''){
-        			var pURL = event.target.picURL.value;
-      			}else {
-      				var pURL = "http://southerncalifornia.arlisna.org/wp-content/uploads/2008/03/generic-profile.png";
-      			}
+				//check to see if email is valid, everything else too vague to judge
+				var emailValid = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+				if(emailValid.test(event.target.email.value)){
 
-      			//run function to add contct to database
-      			Meteor.call("addContact", fstName, lstName, company, eml, phNum, pURL);
+	      				//grab all info from new contact form
+	      				var fstName = event.target.firstName.value;
+	      				var lstName = event.target.lastName.value;
+	      				var company = event.target.company.value;
+	      				var eml = event.target.email.value;
+	      				var phNum = event.target.phoneNum.value;
+	
+		      			//default img vs inputed img
+	      				if(event.target.picURL.value !== ''){
+	        				var pURL = event.target.picURL.value;
+	      				}else {
+      						var pURL = "http://southerncalifornia.arlisna.org/wp-content/uploads/2008/03/generic-profile.png";
+      					}
+
+		      			//run function to add contct to database
+      					Meteor.call("addContact", fstName, lstName, company, eml, phNum, pURL);
   
-      			//for testing
-      			console.log(Contacts.find().fetch());
+  		    			//for testing
+      					console.log(Contacts.find().fetch());
+
+					//clear form
+	      				event.target.firstName.value = '';
+					event.target.lastName.value = '';
+					event.target.company.value = '';
+					event.target.email.value = '';
+					event.target.phoneNum.value = '';
+					event.target.picURL.value = '';
       
-      			//clear form
-      			event.target.firstName.value = '';
-			event.target.lastName.value = '';
-			event.target.company.value = '';
-			event.target.email.value = '';
-			event.target.phoneNum.value = '';
-			event.target.picURL.value = '';
-    		},
+  	    			}else {
+					event.target.email.value = "EMAIL INVALID";
+					alert('Please enter valid email address');
+				}
+
+    			}else {
+				alert('Must sign in to add contact');
+			}
+		},
 
     		//click on contact to open up rest of info
     		"click .info": function(){
